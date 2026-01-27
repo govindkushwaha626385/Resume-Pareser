@@ -37,6 +37,7 @@ This project uses **LangGraph Multi-Agent Pipeline**, **Supabase**, and **OLLAMA
 
 ### 📦 Frontend Setup
 
+```bash
 
 cd frontend
 npm install
