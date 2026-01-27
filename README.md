@@ -19,6 +19,20 @@ This project uses **LangGraph Multi-Agent Pipeline**, **Supabase**, and **OLLAMA
 
 ---
 
+
+## 🚀 backend/.env
+
+PORT=8080
+SUPABASE_URL=""
+SUPABASE_SERVICE_ROLE_KEY=""
+
+EMAIL_USER="govindkushwaha6263@gmail.com"
+EMAIL_PASS=""
+
+# AI_PROVIDER="gemini"
+GOOGLE_API_KEY=""
+---
+
 ## 🛠 Tech Stack
 
 **Frontend**
