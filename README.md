@@ -27,7 +27,7 @@ This project uses **LangGraph Multi-Agent Pipeline**, **Supabase**, and **OLLAMA
 - SUPABASE_SERVICE_ROLE_KEY=""
 - EMAIL_USER="govindkushwaha6263@gmail.com"
 - EMAIL_PASS=""
-- # AI_PROVIDER="gemini"
+- AI_PROVIDER="gemini" (It should be commented if you are using ollama locally)
 - GOOGLE_API_KEY=""
 
 
