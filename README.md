@@ -37,7 +37,7 @@ This project uses **LangGraph Multi-Agent Pipeline**, **Supabase**, and **OLLAMA
 
 ### 📦 Frontend Setup
 
-```bash
+
 cd frontend
 npm install
 npm run dev
@@ -47,7 +47,7 @@ Frontend will run on:
 🧩 Backend Setup
 cd backend
 npm install
-npm run dev
+npm run start
 Backend will run on:
 👉 http://localhost:8080
 
@@ -75,7 +75,7 @@ Add your API key:
 
 GEMINI_API_KEY=your_api_key_here
 🧠 Multi-Agent Pipeline Architecture
-This system uses LangGraph to run 4 agents in sequence:
+This system uses LangGraph to run agents in sequence:
 
 1️⃣ Parsing Agent
 Converts PDF resume into structured JSON:
