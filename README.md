@@ -147,7 +147,7 @@ All APIs are tested using Postman.
 
 ### ✅ A. Intake & Job Management
 ➤ Create Job
-POST /jobs
+-POST /jobs
 
 Used to create a job with:
 Title
@@ -156,7 +156,7 @@ Required skills
 Preferred skills
 
 
-➤ Upload Resume
+-➤ Upload Resume
 POST /upload
 
 Uploads PDF to Supabase
@@ -166,14 +166,14 @@ Stores application source and priority
 
 ### 🔄 B. Processing & Analytics
 
-➤ Process Candidate
+-➤ Process Candidate
 POST /process
 
 Triggers all 4 AI agents
 Returns full intelligence report
 
 
-➤ Fetch Candidate Report
+-➤ Fetch Candidate Report
 GET /candidate/{id}/report
 
 Returns combined data from:
@@ -183,7 +183,7 @@ Risk
 Audit Logs
 
 
-➤ Job Leaderboard
+-➤ Job Leaderboard
 GET /process/jobs/{id}/candidates
 
 Shows ranked candidates for a job
@@ -192,7 +192,7 @@ Sorted by AI score (high → low)
 
 ### 💬 C. Communication & Chat
 
-➤ Automated Email
+-➤ Automated Email
 POST /email
 
 Sends:
@@ -201,7 +201,7 @@ Rejection email
 Based on AI decision
 
 
-➤ Profile Chat
+-➤ Profile Chat
 POST /chat
 
 Ask questions like:
@@ -210,19 +210,19 @@ Ask questions like:
 "Why is this score low?"
 AI replies using candidate data.
 
-
-🔐 Security & Integrity Features
-🛡 Fraud Protection
+---
+### 🔐 Security & Integrity Features
+-🛡 Fraud Protection
 Detects duplicate resumes across jobs
 
 
 
-🚨 Hard Cap Rule
+-🚨 Hard Cap Rule
 
 If duplicate detected:
 Final score is capped at 15%
 
-🧾 Audit Trail
+-🧾 Audit Trail
 Every resume follows this lifecycle:
 
 
