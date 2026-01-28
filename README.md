@@ -51,182 +51,180 @@ This project uses **LangGraph Multi-Agent Pipeline**, **Supabase**, and **OLLAMA
 
 ### 📦 Frontend Setup
 
-```bash
 
-cd frontend
-npm install
-npm run dev
-Frontend will run on:
-👉 http://localhost:5173
+- cd frontend
+- npm install
+- npm run dev
+- Frontend will run on:
+- 👉 http://localhost:5173
 
-🧩 Backend Setup
-cd backend
-npm install
-npm run start
-Backend will run on:
-👉 http://localhost:8080
+### 🧩 Backend Setup
+- cd backend
+- npm install
+- npm run start
+- Backend will run on:
+- 👉 http://localhost:8080
 
-🔐 AI Provider Configuration (IMPORTANT)
+### 🔐 AI Provider Configuration (IMPORTANT)
 By default, the project uses OLLAMA locally (recommended for privacy & free usage).
 
-✅ To Use OLLAMA (Default)
-Install OLLAMA
+- ✅ To Use OLLAMA (Default)
+- Install OLLAMA
 
-Run a model:
+---
 
-ollama run llama3
-Backend will automatically use it.
+## ⚙️ Run a model:
 
-🔁 To Use Google Gemini Instead
-Open: backend/.env
+- ollama run llama3
+- Backend will automatically use it.
 
-Find this line:
+- 🔁 To Use Google Gemini Instead
+- Open: backend/.env
 
-# AI_PROVIDER="gemini"
+- Find this line:
+
+- # AI_PROVIDER="gemini"
 Remove #:
 
-AI_PROVIDER="gemini"
+- AI_PROVIDER="gemini"
 Add your API key:
 
-GEMINI_API_KEY=your_api_key_here
-🧠 Multi-Agent Pipeline Architecture
+- GEMINI_API_KEY=your_api_key_here
+
+---
+
+## 🧠 Multi-Agent Pipeline Architecture
+
 This system uses LangGraph to run agents in sequence:
 
-1️⃣ Parsing Agent
+### 1️⃣ Parsing Agent
 Converts PDF resume into structured JSON:
 
-Name
+- Name
+- Skills
+- Education
+- Experience
+- all other details (etc.)
 
-Skills
-
-Education
-
-Experience
-
-2️⃣ Fraud Detection Agent
+### 2️⃣ Fraud Detection Agent
 Detects:
 
-Impossible job date overlaps
+- Impossible job date overlaps
+- Fake filler text (like Lorem Ipsum)
+- Duplicate applications
 
-Fake filler text (like Lorem Ipsum)
+### 3️⃣ Verification Agent (Future Scope)
+- Placeholder node for:
+- Background checks
+- Company verification APIs
 
-Duplicate applications
-
-3️⃣ Verification Agent (Future Scope)
-Placeholder node for:
-
-Background checks
-
-Company verification APIs
-
-4️⃣ Scoring & Ranking Agent
+### 4️⃣ Scoring & Ranking Agent
 Uses weighted formula:
 
-Skills      → 50%
-Experience  → 35%
-Education   → 15%
+- Skills      → 50%
+- Experience  → 35%
+- Education   → 15%
+- 
 📊 Final Ranking Formula
-finalRankScore = overallScore - (fraudScore × 0.35) + priorityBonus
+- finalRankScore = overallScore - (fraudScore × 0.35) + priorityBonus
+
+  
 🧾 Explainability (Very Important)
 For every score, AI generates:
 
-✅ 3–6 bullet point reasons
+- ✅ 3–6 bullet point reasons
 
 Helps recruiters trust the AI result
 
-🌐 API Documentation
+---
+
+## 🌐 API Documentation
+
 Base URL:
 👉 http://localhost:8080/hr/resume
 
 All APIs are tested using Postman.
 
-✅ A. Intake & Job Management
+### ✅ A. Intake & Job Management
 ➤ Create Job
 POST /jobs
 
 Used to create a job with:
-
 Title
-
 Description
-
 Required skills
-
 Preferred skills
+
 
 ➤ Upload Resume
 POST /upload
 
 Uploads PDF to Supabase
-
 Generates unique candidateId
-
 Stores application source and priority
 
-🔄 B. Processing & Analytics
+
+### 🔄 B. Processing & Analytics
+
 ➤ Process Candidate
 POST /process
 
 Triggers all 4 AI agents
-
 Returns full intelligence report
+
 
 ➤ Fetch Candidate Report
 GET /candidate/{id}/report
 
 Returns combined data from:
-
 Profile
-
 Score
-
 Risk
-
 Audit Logs
+
 
 ➤ Job Leaderboard
 GET /process/jobs/{id}/candidates
 
 Shows ranked candidates for a job
-
 Sorted by AI score (high → low)
 
-💬 C. Communication & Chat
+
+### 💬 C. Communication & Chat
+
 ➤ Automated Email
 POST /email
 
 Sends:
-
 Shortlist email OR
-
 Rejection email
-
 Based on AI decision
+
 
 ➤ Profile Chat
 POST /chat
 
 Ask questions like:
-
 "What are top skills?"
-
 "Any fraud risks?"
-
 "Why is this score low?"
-
 AI replies using candidate data.
+
 
 🔐 Security & Integrity Features
 🛡 Fraud Protection
 Detects duplicate resumes across jobs
 
-🚨 Hard Cap Rule
-If duplicate detected:
 
+
+🚨 Hard Cap Rule
+
+If duplicate detected:
 Final score is capped at 15%
 
 🧾 Audit Trail
 Every resume follows this lifecycle:
+
 
 UPLOAD → PARSE → FRAUD_CHECK → SCORING_COMPLETE → EMAIL_SENT
 This helps for:
