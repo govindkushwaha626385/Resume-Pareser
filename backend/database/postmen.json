@@ -1,0 +1,215 @@
+{
+	"info": {
+		"_postman_id": "26620400-8172fca0-5f59-4236-8bf6-ff5147031b8e",
+		"name": "AI Resume Intelligence System",
+		"description": "Comprehensive suite for AI-powered resume parsing, fraud detection, and candidate evaluation.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Jobs Management",
+			"item": [
+				{
+					"name": "Create Job",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"JOB-201\",\n    \"title\": \"Senior Frontend Engineer\",\n    \"jd_text\": \"We are looking for a seasoned React engineer to lead the development of our core dashboard...\",\n    \"must_have_skills\": [\"Reactjs\", \"Nodejs\", \"TypeScript\", \"Redux\", \"CSS\"],\n    \"good_to_have_skills\": [\"SQL\", \"PostgreSQL\", \"Tailwind CSS\"],\n    \"min_exp_years\": 2,\n    \"max_exp_years\": 8\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/hr/resume/jobs"
+					},
+					"response": []
+				},
+				{
+					"name": "All Jobs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/hr/resume/jobs"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2. Intake & Upload",
+			"item": [
+				{
+					"name": "API1 - Upload Resume",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": [],
+									"description": "Resume file (PDF)"
+								},
+								{
+									"key": "jobId",
+									"value": "JOB-201",
+									"type": "text",
+									"description": "Job identifier"
+								},
+								{
+									"key": "source",
+									"value": "Referral",
+									"type": "text",
+									"description": "Application source (ATS, Naukri, Linkedin, Referral)"
+								},
+								{
+									"key": "priority",
+									"value": "high",
+									"type": "text",
+									"description": "Priority level"
+								}
+							]
+						},
+						"url": "http://localhost:8080/hr/resume/upload"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. AI Processing Pipeline",
+			"item": [
+				{
+					"name": "API2 - Process Candidate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"candidateId\": \"CAND-1a178993\",\n  \"jobId\": \"JOB-201\",\n  \"verificationEnabled\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/hr/resume/process"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4. Reports & Leaderboard",
+			"item": [
+				{
+					"name": "API3 - Get Report",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/hr/resume/candidate/CAND-1a178993/report"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Job Applications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/hr/resume/process/jobs/JOB-201/candidates"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "5. Interaction & Decisions",
+			"item": [
+				{
+					"name": "Chat with Profile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"candidateId\": \"CAND-1a178993\",\n  \"question\": \"What are the top core skills candidate have?\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/hr/resume/chat"
+					},
+					"response": []
+				},
+				{
+					"name": "Send Email",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"candidateId\": \"CAND-1a178993\",\n  \"type\": \"shortlist\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/hr/resume/email"
+					},
+					"response": []
+				},
+				{
+					"name": "Handle Decision",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"candidateId\": \"CAND-1a178993\",\n  \"decision\": \"SHORTLISTED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/hr/resume/decision"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
