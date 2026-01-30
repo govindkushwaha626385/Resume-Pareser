@@ -226,49 +226,37 @@ Final score is capped at 15%
 Every resume follows this lifecycle:
 
 
-UPLOAD → PARSE → FRAUD_CHECK → SCORING_COMPLETE → EMAIL_SENT
+### UPLOAD → PARSE → FRAUD_CHECK → SCORING_COMPLETE → EMAIL_SENT
 This helps for:
 
-Compliance
+- Compliance
+- Debugging
 
-Debugging
-
-HR accountability
+### HR accountability
 
 ✅ Final Usage Checklist
-✅ Configure Supabase in backend/.env
 
-✅ Start OLLAMA or set Gemini API
+- ✅ Configure Supabase in backend/.env
+- ✅ Start OLLAMA or set Gemini API
+- ✅ Create job using /jobs API
+- ✅ Upload resume using /upload
+- ✅ Run AI pipeline using /process
+- ✅ Check leaderboard & reports
+- ✅ Send emails automatically
 
-✅ Create job using /jobs API
-
-✅ Upload resume using /upload
-
-✅ Run AI pipeline using /process
-
-✅ Check leaderboard & reports
-
-✅ Send emails automatically
-
-📌 Future Improvements
+### 📌 Future Improvements
 Real verification APIs (KYC, employment checks)
 
-Admin dashboard UI
+- Admin dashboard UI
+- Interview scheduling agent
+- ATS integration
+- Bias detection module
 
-Interview scheduling agent
-
-ATS integration
-
-Bias detection module
-
-👨‍💻 Author
-Built as an AI internship / learning project using:
-
-LangGraph Multi-Agent Systems
-
-Practical HR use-cases
-
-Real-world fraud detection logic
+### 👨‍💻 Author
+- Built as an AI internship / learning project using:
+- LangGraph Multi-Agent Systems
+- Practical HR use-cases
+- Real-world fraud detection logic
 
 Perfect for:
 
