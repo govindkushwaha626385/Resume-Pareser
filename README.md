@@ -1,6 +1,6 @@
 # 🤖 AI Resume Intelligence System
 
-# 🤖 Chech backend/database directory for SQL Query and Postmen Collections
+# Check backend/database directory for SQL Query and Postmen Collections
 
 An AI-powered multi-agent system that automatically parses resumes, detects fraud, verifies data (future scope), and ranks candidates for jobs using a transparent scoring system.
 
